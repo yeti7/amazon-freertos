@@ -250,6 +250,8 @@ WIFIReturnCode_t WIFI_Disconnect( void )
             xEventGroupWaitBits(wifi_event_group, DISCONNECTED_BIT, pdTRUE, pdFALSE, portMAX_DELAY);
             xRetVal = eWiFiSuccess;
         }
+        esp_wifi_stop();
+
         /* Return the semaphore. */
         xSemaphoreGive( xWiFiSem );
     }
